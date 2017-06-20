@@ -4,24 +4,31 @@
 
 var colors = require('colours'); // eslint-disable-line
 var path = require('path');
+var pad = require('pad');
 var core = require('./lib/core');
 
 var commandSetNames = process.argv.length > 2 ? process.argv.splice(2) : ['default'];
 
-// set loadConfig()
+// Default configuration.
 var config = {
     pattern: '*',
 
     commands: {
 
-        test: [
-            'npm test'
-        ],
+        test: {
+            description: 'Run \'npm test\' on each module.',
+            run: [
+                'npm test'
+            ]
+        },
 
-        link: [
-            'npm link',
-            'linkDeps'
-        ]
+        link: {
+            description: '\'npm link\' modules, then link dependencies.',
+            run: [
+                'npm link',
+                'linkDeps'
+            ]
+        }
     },
 
     params: { },
@@ -74,7 +81,10 @@ core.loadConfig(CONFIG_FILE, function(err, cfg) {
         console.log('Available commands sets are:');
 
         for (var csName in config.commands) {
-            console.log('  ' + csName);
+
+            var description = config.commands[csName].description ? ' - ' + config.commands[csName].description : '';
+
+            console.log('  ' + pad(csName, 15).bold + description);
 
         }
 
