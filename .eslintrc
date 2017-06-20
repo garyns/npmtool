@@ -1,0 +1,151 @@
+{
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "plugins": ["node", "json", "mocha"],
+    "extends": ["eslint:recommended", "plugin:node/recommended"],
+    "rules": {
+        "no-tabs": "error",
+        "indent": [
+            "warn",
+            4,
+            {"SwitchCase": 1}
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quote-props": [
+            "warn",
+            "as-needed"
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "no-warning-comments": [
+            "warn",
+            { "terms": ["todo", "fixme", "hack"], "location": "anywhere" }
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "strict": [
+            "error",
+            "global"
+        ],
+        "comma-dangle": [
+            "warn"
+        ],
+        "object-curly-spacing": [
+            "warn",
+            "always"
+        ],
+        "curly": [
+            "error",
+            "all"
+        ],
+        "brace-style": [
+            "warn",
+            "1tbs",
+            { "allowSingleLine": true }
+        ],
+        "no-trailing-spaces": [
+            "warn"
+        ],
+        "object-curly-newline": [
+            "warn",
+            {"minProperties": 2}
+        ],
+        "no-multi-spaces": [
+            "warn"
+        ],
+        "space-infix-ops": [
+            "warn"
+        ],
+        "space-before-blocks": [
+            "warn"
+        ],
+        "space-unary-ops": [
+            "warn"
+        ],
+        "keyword-spacing": [
+            "warn"
+        ],
+        "key-spacing": [
+            "warn"
+        ],
+        "lines-around-directive": [
+            "warn"
+        ],
+        "newline-after-var": [
+            "warn"
+        ],
+        "block-spacing": [
+            "warn"
+        ],
+        "object-property-newline": [
+            "warn"
+        ],
+        "array-bracket-spacing": [
+            "warn",
+            "never"
+        ],
+        "comma-spacing": [
+            "warn"
+        ],
+        "func-call-spacing": [
+            "warn",
+            "never"
+        ],
+        "semi-spacing": [
+            "warn"
+        ],
+        "arrow-spacing": [
+            "warn"
+        ],
+        "one-var-declaration-per-line": [
+            "warn"
+        ],
+        "max-statements-per-line": [
+            "warn",
+            { "max": 2 }
+        ],
+
+        /*
+        NODEJS - eslint.
+        */
+        "callback-return": [
+            "error",
+            ["callback", "cb", "next", "done"]
+        ],
+
+        /*
+         NODEJS - Plugin.
+        */
+        /*
+        "node/exports-style": [
+            "exports",
+            "error"
+        ],
+        */
+
+        /*
+        mocha plugin rules
+        */
+        "mocha/no-exclusive-tests": [
+            "error"
+        ],
+        "mocha/handle-done-callback": [
+            "error"
+        ],
+        "mocha/no-skipped-tests": [
+            "error"
+        ],
+        "mocha/no-pending-tests": [
+            "error"
+        ]
+    }
+}
