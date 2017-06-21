@@ -55,6 +55,7 @@ core.loadConfig(CONFIG_FILE, function(err, cfg) {
     var commandSet = [];
 
     for (var i in commandSetNames) {
+
         var name = commandSetNames[i];
 
         var set = core.resolveCommandSet(config, name);

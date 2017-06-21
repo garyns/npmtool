@@ -1,34 +1,40 @@
 {
-    "pattern": "du-*",
+    "pattern": "*",
 
     "commands": {
 
-        "q1": [
-            "tmo/x.sh",
-            "tmo/x2.js",
-            "ls"
-        ],
+        "q1": {
+            "run":[
+              "tmo/x.sh",
+              "tmo/x2.js",
+              "ls"
+           ]
+       },
 
-        "q2": [
-            "ls -b"
-        ],
+        "test": {
+            "description": "Run 'npm test' on each module.",
+            "run": [
+                "checkPackageJSON",
+                "npm test",
+                "npm run lint"
+            ]
+        },
 
-        "test": [
-            "checkPackageJSON",
-            "npm test",
-            "npm run lint"
-        ],
+        "install": {
+            "description": "For each module, remove node_module folder and run 'npm install'.",
+            "run": [
+                "rm -fr node_modules",
+                "npm install"
+            ]
+        },
 
-        "install": [
-            "rm -fr node_modules",
-            "npm install"
-        ],
-
-        "link": [
-            "npm link",
-            "linkDeps"
-        ]
-
+        "link": {
+            "description": "'npm link' modules, then link dependencies.",
+            "run": [
+                "npm link",
+                "linkDeps"
+            ]
+        }
     },
 
     "params" : {
