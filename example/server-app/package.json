@@ -1,0 +1,17 @@
+{
+  "name": "server-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+  "dependencies" {
+    "utils": "utils@1.0.x",
+    "dbservices": "dbservices@1.0.x",
+    "logging": "logging@1.0.x",
+    "users": "users@1.0.x"
+  }
+}
