@@ -39,7 +39,7 @@ var config = {
     }
 };
 
-const CONFIG_FILE = './npmtool.json';
+var CONFIG_FILE = './npmtool.json';
 
 core.loadConfig(CONFIG_FILE, function(err, cfg) {
 

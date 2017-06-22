@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Mock test\" && exit 0"
+      "test": "echo \"Mock test\" && exit 1",
+      "lint": "echo \"Mock Lint\" && exit 0"
   },
   "author": "",
   "license": "ISC"

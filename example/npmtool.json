@@ -3,18 +3,10 @@
 
     "commands": {
 
-        "q1": {
-            "run":[
-              "tmo/x.sh",
-              "tmo/x2.js",
-              "ls"
-           ]
-       },
-
         "test": {
             "description": "Run 'npm test' on each module.",
             "run": [
-                "checkPackageJSON",
+                "package-nogrep .git#|xtest",
                 "npm test",
                 "npm run lint"
             ]
@@ -32,19 +24,24 @@
             "description": "'npm link' modules, then link dependencies.",
             "run": [
                 "npm link",
-                "linkDeps"
+                "linkdeps"
             ]
-        }
+        },
+
+        "echotest": {
+            "run":[
+              "./echotest1.sh arg1 arg2",
+              "echotest2 arg1 arg2"
+           ]
+       }
+
     },
 
     "params" : {
 
-        "echo": {
-            "param1": "value1"
-        },
-
-        "checkPackageJSON": {
-            "nogrep": "gs|gstest|.git#"
+        "echotest2": {
+            "param1": "value1",
+            "param2": "value2"
         }
 
     },

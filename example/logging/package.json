@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Mock test\" && exit 0"
+      "test": "echo \"Mock test\" && exit 0",
+      "lint": "echo \"Mock Lint\" && exit 0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "utils": "utils@1.0.x"
+    "utils": "utils@1.0.x",
+    "devices": "git+ssh://someurl.com/devices.git#develop"
   }
 }
