@@ -26,7 +26,9 @@ npmtool [commandset] [commandset] ...
 
 #### Folder Structure
 
-Npmtool requires all your npm modules to be in a common folder. `npmtool.json` contains the configuration (more on that later). For example, lets say logging, dbservices utils, and users are all npm modules, and server-app is the main app which uses these modules.
+Npmtool requires all your npm modules to be in a common folder. `npmtool.json` contains the configuration (more on that later).
+
+For example, lets say we have modules called *logging*, *dbservices*, *utils*, and *users*, with *server-app* being our main app that uses these modules.
 
 Lets also assume that
 
@@ -91,7 +93,7 @@ Linking modules was the original motivation for creating `npmtool`, however you 
 
 ### Configuration - npmtool.json
 
-Here is a details example of `npmtool.json`. It needs to reside in the base folder with your modules.
+Here is a detailed example of `npmtool.json`. It needs to reside in the base folder with your modules.
 
 ```
 {
@@ -160,7 +162,7 @@ Performs an inverse grep on `package.json` files, and fails if any of the patter
 
 Any executable script or command can be used. It's exit value determines if `npmtool` reports a success or failure.
 
-An relative script or command is resolved relative to the folder where you run `npmtool`.
+A relative script or command is resolved relative to the folder where you run `npmtool`.
 
 * `npmtool` reports success for exit code 0
 * `npmtool` reports failure for exit code != 0
@@ -183,7 +185,7 @@ echo "I'm an execuitable file!"
 exit 0 # 0 === success.
 ```
 
-Here is a JavaScript command. See the [cmd folder for examples](cmd/), including the `linkdeps` and `nogrep` internal commands.
+Here is a JavaScript command. See the [cmd folder for examples](cmd/), including the `linkdeps` and `package-nogrep` internal commands.
 
 Lets call is `echotest2.js` in the same folder as `npmtool.json`.
 
@@ -240,11 +242,11 @@ dbservices (./dbservices)
 Some observations:
 
 * The .js command can output a summary - text in () - , where as the .sh script (or any non .js script) will not, and only indicates a success (exit 0) or failure (exit != 0).
-* Note the stringified JSON output of `echotest2.js` to see how args and params are handled.
+* Note the stringified JSON output of `echotest2` to see how args and params are handled.
 * For .js commands, the .js extension is optional in the `commands` / `run` array.
 
 
-`echotest1.js` and `echotest2.js` and the `echotest` command set are include in the [example](example) folder.
+`echotest1.sh` and `echotest2.js` and the `echotest` command set are include in the [example](example) folder.
 
 ### Please Send On Your Custom JavaScript Commands
 
