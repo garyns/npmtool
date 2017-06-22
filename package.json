@@ -1,15 +1,14 @@
 {
   "name": "npmtool",
-  "version": "2.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "A tool to bulk manage multiple in-development npm modules",
   "main": "index.js",
   "bin": {
     "npmtool": "./cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "gary@smart-itc.com.au",
   "license": "MIT",
   "repository": {
     "type": "git",
