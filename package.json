@@ -1,6 +1,6 @@
 {
   "name": "npmtool",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tool to bulk manage multiple in-development npm modules",
   "main": "index.js",
   "bin": {
@@ -14,6 +14,14 @@
     "type": "git",
     "url": "https://github.com/garyns/npmtool"
   },
+  "keywords": [
+    "npm",
+    "node",
+    "build",
+    "buildtools",
+    "build tools",
+    "module"
+  ],
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-plugin-json": "^1.2.0",
