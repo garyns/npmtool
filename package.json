@@ -10,7 +10,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garyns/npmtool"
+  },
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-plugin-json": "^1.2.0",
