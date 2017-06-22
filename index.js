@@ -6,7 +6,7 @@ var colors = require('colours'); // eslint-disable-line
 var path = require('path');
 var pad = require('pad');
 var core = require('./lib/core');
-
+var CONFIG_FILE = './npmtool.json';
 var commandSetNames = process.argv.length > 2 ? process.argv.splice(2) : ['default'];
 
 // Default configuration.
@@ -39,7 +39,6 @@ var config = {
     }
 };
 
-var CONFIG_FILE = './npmtool.json';
 
 core.loadConfig(CONFIG_FILE, function(err, cfg) {
 
