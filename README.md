@@ -2,7 +2,7 @@
 
 A tool to bulk manage multiple in-development npm modules.
 
-If your project contains more than a few npm modules that are in active development, managing these at the local developer level can become time consuming and sometime a headache.
+If your project contains more than a few npm modules that are in active development, managing these at the local developer level can become time consuming and sometimes a headache.
 
 Here are a few ways npmtool can help
 
@@ -81,6 +81,8 @@ npmtool link
 
 1. Perform a `npm link` on each module
 2. Resolve module dependencies and link them for you
+
+![npmtool link example](assets/npmlink.gif)
 
 ##### Dependency Resolution
 
