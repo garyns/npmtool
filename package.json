@@ -1,6 +1,6 @@
 {
   "name": "npmtool",
-  "version": "1.1.0",
+  "version": "1.0.9",
   "description": "A tool to bulk manage multiple in-development npm modules",
   "main": "index.js",
   "bin": {
