@@ -76,8 +76,10 @@ core.loadConfig(CONFIG_FILE, function(err, cfg) {
 
     if (commandSet.length === 0) {
 
-        console.log('Usage ' + path.basename(process.argv[1]) + ' [command_set] [command_set]...\n');
+        var pkgMeta = require('./package.json');
 
+        console.log(path.basename(process.argv[1]) + ' ' + pkgMeta.version + '\n');
+        console.log('Usage ' + path.basename(process.argv[1]) + ' [command_set] [command_set]...\n');
         console.log('Available commands sets are:');
 
         for (var csName in config.commands) {
