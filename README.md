@@ -148,6 +148,22 @@ Here is a detailed example of `npmtool.json`. It needs to reside in the base fol
 * **commands** - command sets. For example `npmtool test` will run `npm test` and then `npm run lint`.
 * **branches** - If you are using git, you can colorise the branch names reported by `npmtool`.
 
+
+### Configuration - package.json
+
+##### Skip / Ignore a Module
+
+To have npmtool skip a module add the property `"npmtool":false` to the module's package.json. Npmtool will still include the module in it's output, but will not run commands on the module.
+
+```
+// package.json
+{
+  "name": "my-module",
+  "version": "1.0.0",
+  "npmtool": false,   <--- Tell npmtool to skip this module.
+  ...
+```
+
 ### Internal npmtool Commands
 
 `npmtool` include the follow internal / in-build commands.
@@ -159,6 +175,7 @@ Transverses all modules in the base folder to resolve module dependencies. It th
 ##### package-nogrep
 
 Performs an inverse grep on `package.json` files, and fails if any of the patterns match. Created to help prevent checking in ad-hoc test scripts or catch development branches in dependencies, for example)
+
 
 ## Using and Creating Your Own Scripts / Commands
 
