@@ -170,7 +170,7 @@ To have npmtool skip a module add the property `"npmtool":false` to the module's
 
 ##### linkdeps
 
-Transverses all modules in the base folder to resolve module dependencies. It then performa an `npm link` to link dependant modules.
+Transverses all modules in the base folder to resolve module dependencies. It then performs an `npm link` to link dependant modules.
 
 ##### package-nogrep
 
@@ -214,7 +214,7 @@ Here is an execuitable script (remember to chmod u+x).
 Lets call is `echotest1.sh` in the same folder as `npmtool.json`.
 
 ```
-#! /bin/bash
+#!/bin/bash
 # ./echotest1.sh
 
 echo "I'm an execuitable file!"
