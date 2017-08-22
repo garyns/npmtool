@@ -176,6 +176,24 @@ Transverses all modules in the base folder to resolve module dependencies. It th
 
 Performs an inverse grep on `package.json` files, and fails if any of the patterns match. Created to help prevent checking in ad-hoc test scripts or catch development branches in dependencies, for example)
 
+##### git-status
+
+Checks each module folder, and if it's a GIT repo reports the status.
+
+Statuses reported and success/error states are:
+
+* Ok (Success)
+* Ahead  (Error)
+* Behind (Error)
+* Modified (Error)
+* Not Added (Error)
+* Conflict (Error)
+* Created (Error)
+* Deleted (Error)
+* Renamed (Error)
+
+
+
 
 ## Using and Creating Your Own Scripts / Commands
 
