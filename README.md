@@ -106,6 +106,7 @@ Here is a detailed example of `npmtool.json`. It needs to reside in the base fol
         "test": {
             "description": "Run 'npm test' on each module.",
             "run": [
+                "git-status"
                 "package-nogrep .git#|xtest"
                 "npm test",
                 "npm run lint"
@@ -170,11 +171,21 @@ To have npmtool skip a module add the property `"npmtool":false` to the module's
 
 ##### linkdeps
 
-Transverses all modules in the base folder to resolve module dependencies. It then performa an `npm link` to link dependant modules.
+Transverses all modules in the base folder to resolve module dependencies. It then performs an `npm link` to link dependant modules.
+
+See above npmtool.json sample for an example.
 
 ##### package-nogrep
 
 Performs an inverse grep on `package.json` files, and fails if any of the patterns match. Created to help prevent checking in ad-hoc test scripts or catch development branches in dependencies, for example)
+
+package-nogrep takes a single argument which is the regex to match.
+
+```
+// This will report an error if package.json contains the string .git# or xtest 
+package-nogrep .git#|xtest
+```
+See above npmtool.json sample for an example.
 
 ##### git-status
 
@@ -192,7 +203,7 @@ Statuses reported and success/error states are:
 * Deleted (Error)
 * Renamed (Error)
 
-
+See above npmtool.json sample for an example.
 
 
 ## Using and Creating Your Own Scripts / Commands
@@ -214,7 +225,7 @@ Here is an execuitable script (remember to chmod u+x).
 Lets call is `echotest1.sh` in the same folder as `npmtool.json`.
 
 ```
-#! /bin/bash
+#!/bin/bash
 # ./echotest1.sh
 
 echo "I'm an execuitable file!"
