@@ -4,9 +4,14 @@ var fs = require('fs');
 
 exports.run = function(pkg, args, shell, params, callback) {
 
-    // var statusToIgnore = [];
-    var success = null;
-    var error = null;
+    var failReportingMode = 2; // How to report failed tests. 1 = Warning, 2 = Error
+    var statusToInclude = [];
+    var statusToExclude = [];
+    var summary = null;
+
+    if (params.warnings) {
+        failReportingMode = 1;
+    }
 
     try {
         fs.statSync(pkg.folder + '/.git');
@@ -30,57 +35,85 @@ exports.run = function(pkg, args, shell, params, callback) {
             return;
         }
 
-        // if (args.length > 0) {
-        //
-        //     for (var i in args) {
-        //         var a = args[i];
-        //         var b = a.toLowerCase().replace(/\s*/, '');
-        //
-        //         statusToIgnore.push(b);
-        //     }
-        // }
+        if (args.length > 0) {
+
+            for (var i in args) {
+                var a = args[i];
+                var b = a.toLowerCase().replace(/\s*/, '');
+
+                if (b[0] === '!') {
+                    statusToExclude.push(b.substring(1, b.length)); // Strip leading !
+                } else {
+                    statusToInclude.push(b);
+                }
+
+            }
+        }
 
         var gitFlags = [];
 
-        if (status.ahead) {
+        if (includeStatus('ahead') && status.ahead) {
             gitFlags.push('Ahead');
         }
 
-        if (status.behind) {
+        if (includeStatus('behind') && status.behind) {
             gitFlags.push('Behind');
         }
-        if (status.not_added.length > 0) {
-            gitFlags.push('Not Added');
+        if (includeStatus('notadded') && status.not_added.length > 0) {
+            gitFlags.push('NotAdded');
         }
 
-        if (status.conflicted.length > 0) {
+        if (includeStatus('conflict') && status.conflicted.length > 0) {
             gitFlags.push('Conflict');
         }
 
-        if (status.created.length > 0) {
+        if (includeStatus('created') && status.created.length > 0) {
             gitFlags.push('Created');
         }
 
-        if (status.deleted.length > 0) {
+        if (includeStatus('deleted') && status.deleted.length > 0) {
             gitFlags.push('Deleted');
         }
 
-        if (status.modified.length > 0) {
+        if (includeStatus('modified') && status.modified.length > 0) {
             gitFlags.push('Modified');
         }
 
-        if (status.renamed.length > 0) {
+        if (includeStatus('renamed') && status.renamed.length > 0) {
             gitFlags.push('Renamed');
         }
 
         if (gitFlags.length > 0) {
-            error = gitFlags.join(', ');
+            summary = gitFlags.join(', ');
+            callback(failReportingMode, summary);
+            return;
+
         } else {
-            success = 'Ok';
+            callback(0, 'Ok');
+            return;
         }
 
-        // output will be printed on npmtool output.
-        callback(error, success);
     });
+
+
+    function includeStatus(status) {
+        var include = testInclude(status) && !testExclude(status);
+
+        //console.log('Include ' + status, include);
+        return include;
+    }
+
+    function testInclude(status) {
+
+        if (statusToInclude.length === 0) {
+            return true;
+        }
+
+        return statusToInclude.indexOf(status) !== -1;
+    }
+
+    function testExclude(status) {
+        return statusToExclude.indexOf(status) !== -1;
+    }
 
 };
