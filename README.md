@@ -159,6 +159,7 @@ Here is a detailed example of `npmtool.json`. It needs to reside in the base fol
 
 * **pattern** - a glob pattern used to filter module folders. * for all folders, noting that only folders with a package.json are used.
 * **commands** - command sets. For example `npmtool test` will run `npm test` and then `npm run lint`.
+* **params** - Global configuration settings for internal commands. See _Internal npmtool Commands_ below.
 * **branches** - If you are using git, you can colorise the branch names reported by `npmtool`.
 
 
