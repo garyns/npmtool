@@ -17,7 +17,7 @@ exports.run = function(pkg, args, shell, params, callback) {
     // @param args arguements string or array.
     // @param callback(error message or null, output)
     // shell(pkg, cmd, args, function(err, output) {
-    //     callback(err, output);
+    //     callback(err|status, output);
     // });
 
     var output = {
@@ -25,6 +25,9 @@ exports.run = function(pkg, args, shell, params, callback) {
         params: params
     };
 
-    // output will be printed on npmtool output.
+    // Two ways to use callback()
+    // 1. callback(error:String, summary); // If error is not null this is reported as an error, else summary is reported as success.
+    // 2. callback(status:Integer, summary); // status 0 = Success, 1 = Warning, 2 = Error. summary is reported as status type.
+
     callback(null, output);
 };
