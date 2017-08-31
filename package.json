@@ -3,8 +3,11 @@
   "version": "1.2.1",
   "description": "A tool to bulk manage multiple in-development npm modules",
   "main": "lib/cli.js",
+  "engines": {
+    "node": ">=4"
+  },
   "bin": {
-    "npmtool": "./cli.js"
+    "npmtool": "lib/cli.js"
   },
   "scripts": {},
   "author": "gary@smart-itc.com.au",
@@ -25,15 +28,15 @@
     "eslint": "^3.19.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-mocha": "^4.9.0",
-    "eslint-plugin-node": "^4.2.2"
+    "eslint-plugin-node": "^4.2.3"
   },
   "dependencies": {
-    "async": "^2.4.1",
+    "async": "^2.5.0",
     "colours": "^0.6.0-2",
     "glob": "^7.1.2",
     "grepit": "^1.0.0",
     "pad": "^1.1.0",
     "progress": "^2.0.0",
-    "simple-git": "^1.73.0"
+    "simple-git": "^1.76.0"
   }
 }
