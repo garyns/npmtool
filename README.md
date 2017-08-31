@@ -48,7 +48,7 @@ Lets also assume that
 
 ##### Classic Approach to Linking
 
-Using npm alone, you would need to do something link this -
+Using npm alone, you would need to do something like this -
 
 ```
 cd logging
@@ -106,6 +106,7 @@ Here is a detailed example of `npmtool.json`. It needs to reside in the base fol
         "test": {
             "description": "Run 'npm test' on each module.",
             "run": [
+                "git-status"
                 "package-nogrep .git#|xtest"
                 "npm test",
                 "npm run lint"
@@ -124,10 +125,22 @@ Here is a detailed example of `npmtool.json`. It needs to reside in the base fol
             "description": "'npm link' modules, then link dependencies.",
             "run": [
                 "npm link",
-                "linkDeps"
+                "linkdeps"
             ]
         }
     },
+
+    "params" : {
+
+        "git-status": {
+            "warnings": false
+        },
+
+        "package-nogrep": {
+            "warnings": false
+        }
+
+    },    
 
     "branches": {
 
@@ -145,7 +158,8 @@ Here is a detailed example of `npmtool.json`. It needs to reside in the base fol
 ##### Options
 
 * **pattern** - a glob pattern used to filter module folders. * for all folders, noting that only folders with a package.json are used.
-* **commands** - command sets. For example `npmtool test` will run `npm test` and then `npm run lint`.
+* **commands** - command sets. For example `npmtool test` will run `git-status`, `package-nogrep`, `npm test` and then `npm run lint`.
+* **params** - Global configuration settings for internal commands. See _Internal npmtool Commands_ below.
 * **branches** - If you are using git, you can colorise the branch names reported by `npmtool`.
 
 
@@ -172,10 +186,77 @@ To have npmtool skip a module add the property `"npmtool":false` to the module's
 
 Transverses all modules in the base folder to resolve module dependencies. It then performs an `npm link` to link dependant modules.
 
+See above npmtool.json sample for an example.
+
 ##### package-nogrep
 
 Performs an inverse grep on `package.json` files, and fails if any of the patterns match. Created to help prevent checking in ad-hoc test scripts or catch development branches in dependencies, for example)
 
+package-nogrep takes a single argument which is the regex to match.
+
+By default package-nogrep reports a test failure as an error. To report test failures as warnings, set a param. See above npmtool.json sample for a full example.
+
+```
+"params" : {
+
+    "package-nogrep": {
+        "warnings": true
+    }
+
+},
+```
+
+```
+// This will report an error if package.json contains the string .git# or xtest
+package-nogrep .git#|xtest
+```
+See above npmtool.json sample for an example.
+
+##### git-status
+
+Checks each module folder, and if it's a GIT repo reports the status.
+
+Default statuses reported and success/error states are:
+
+* Ok (Success)
+* Ahead  (Error)
+* Behind (Error)
+* Modified (Error)
+* NotAdded (Error)
+* Conflict (Error)
+* Created (Error)
+* Deleted (Error)
+* Renamed (Error)
+
+If you only want to test and error on certain statuses, pass them as arguments to git-status. Prefix with ! to ignore a status test.
+
+In this example we are only testing for a defined number of statuses.
+
+```
+"run": [
+    "git-status Modified Created Deleted Renamed"
+    ...
+```
+
+In this example we test for all statuses except NotAdded.
+
+```
+"run": [
+    "git-status !NotAdded"
+    ...
+```
+
+By default git-status reports a test failure as an error. To report test failures as warnings, set a param. See above npmtool.json sample for a full example.
+
+```
+"params" : {
+
+    "git-status": {
+        "warnings": true
+    }
+
+},
+```
 
 ## Using and Creating Your Own Scripts / Commands
 
@@ -218,6 +299,10 @@ exports.run = function(pkg, args, shell, params, callback) {
     };
 
     // output will be printed on npmtool output.
+
+    // Two ways to use callback()
+    // 1. callback(error:String, summary); // If error is not null this is reported as an error, else summary is reported as success.
+    // 2. callback(status:Integer, summary); // status 0 = Success, 1 = Warning, 2 = Error. summary is reported as status type.    
     callback(null, output);
 };
 ```
@@ -270,3 +355,26 @@ Some observations:
 ### Please Send On Your Custom JavaScript Commands
 
 If you create an awesome command, please send it on to me.
+
+
+## Change log
+
+
+#### 1.2.2
+* Support for warning statuses
+* Added git-status internal command
+* cmd/echo.js example comments updated to illustrate reporting a success, error or warning
+
+#### 1.2.1
+* Bug fix with progress bar
+
+#### 1.2.0
+* Support for ignoring a module by adding npmtool: false to package.json
+* New npmtool.json structure
+
+#### 1.1.0
+* Maintenance release.
+* Support for 'command sets' in npmtool.json
+
+#### 1.0.1
+* Initial Release
