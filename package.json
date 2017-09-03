@@ -1,6 +1,6 @@
 {
   "name": "npmtool",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A tool to bulk manage multiple in-development npm modules",
   "main": "lib/cli.js",
   "engines": {
