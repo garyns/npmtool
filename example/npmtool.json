@@ -4,7 +4,7 @@
     "commands": {
 
         "test": {
-            "description": "Run 'npm test' on each module.",
+            "description": "Check, test & lint each module.",
             "run": [
                 "package-nogrep .git#|xtest",
                 "npm test",
@@ -25,6 +25,13 @@
             "run": [
                 "npm link",
                 "linkdeps"
+            ]
+        },
+
+        "unlink": {
+            "description": "'npm unlink' modules.",
+            "run": [
+                "npm unlink"
             ]
         },
 

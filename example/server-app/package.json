@@ -1,5 +1,5 @@
 {
-  "name": "server-app",
+  "name": "@test/server-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "utils": "utils@1.0.x",
-    "dbservices": "dbservices@1.0.x",
-    "logging": "logging@1.0.x",
-    "users": "users@1.0.x"
+    "@test/utils": "1.0.x",
+    "@test/dbservices": "1.0.x",
+    "@test/logging": "1.0.x",
+    "@test/users": "1.0.x"
   }
 }

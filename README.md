@@ -188,6 +188,8 @@ Transverses all modules in the base folder to resolve module dependencies. It th
 
 See above npmtool.json sample for an example.
 
+**IMPORTANT:** If you are linking module packages that are **not published** to a registry, the first execution of an _npm link_ and thus _linkdeps_ will exist with a failure (exit code 1). This is due to a 404 status being returned by the registry. A second execution of _npm link_ / _linkdeps_ should exit successfully.
+
 ##### package-nogrep
 
 Performs an inverse grep on `package.json` files, and fails if any of the patterns match. Created to help prevent checking in ad-hoc test scripts or catch development branches in dependencies, for example)
@@ -280,7 +282,7 @@ Lets call is `echotest1.sh` in the same folder as `npmtool.json`.
 #!/bin/bash
 # ./echotest1.sh
 
-echo "I'm an execuitable file!"
+echo "I'm an executable file!"
 
 exit 0 # 0 === success.
 ```
@@ -359,6 +361,10 @@ If you create an awesome command, please send it on to me.
 
 ## Change log
 
+#### 1.2.3
+* Improved debugging support
+* Scoped tests
+* Readme update
 
 #### 1.2.2
 * Support for warning statuses

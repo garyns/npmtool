@@ -1,15 +1,15 @@
 {
-  "name": "dbservices",
+  "name": "@test/dbservices",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
       "test": "echo \"Mock test\" && exit 0",
-      "lint": "echo \"Mock Lint\" && exit 1"
+      "lint": "echo \"Mock Lint\" && exit 0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "logging": "logging@1.0.x"
+    "@test/logging": "1.0.x"
   }
 }
