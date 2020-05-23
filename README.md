@@ -361,6 +361,9 @@ If you create an awesome command, please send it on to me.
 
 ## Change log
 
+#### 1.3.0
+* Dependencies updated due to security vulnerability.
+
 #### 1.2.3
 * Improved debugging support
 * Scoped tests
