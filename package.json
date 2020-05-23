@@ -26,17 +26,17 @@
   ],
   "devDependencies": {
     "eslint": "^3.19.0",
-    "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-mocha": "^4.9.0",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-mocha": "^4.12.1",
     "eslint-plugin-node": "^4.2.3"
   },
   "dependencies": {
-    "async": "^2.5.0",
+    "async": "^2.6.3",
     "colours": "^0.6.0-2",
-    "glob": "^7.1.2",
+    "glob": "^7.1.6",
     "grepit": "^1.0.0",
-    "pad": "^1.1.0",
-    "progress": "^2.0.0",
-    "simple-git": "^1.76.0"
+    "pad": "^1.2.1",
+    "progress": "^2.0.3",
+    "simple-git": "^1.132.0"
   }
 }
