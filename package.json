@@ -37,6 +37,6 @@
     "grepit": "^1.0.0",
     "pad": "^1.2.1",
     "progress": "^2.0.3",
-    "simple-git": "^1.132.0"
+    "simple-git": "^3.5.0"
   }
 }
